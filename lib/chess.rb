@@ -1,6 +1,5 @@
 require "./lib/bishop"
 require "./lib/board"
-require "./lib/chess"
 require "./lib/king"
 require "./lib/knight"
 require "./lib/pawn"
