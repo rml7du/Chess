@@ -17,7 +17,7 @@ class Chess
     end
 
     def gameplay()
-        while board.check_mate() == false
+        while @board.check_mate() == false
             @turn % 2 == 1 ? current_player = @player1 : current_player = @player2
             player_turn(current_player)
             @turn+=1
@@ -25,13 +25,20 @@ class Chess
     end
 
     def player_turn()
-
+        @board.print_board
+        puts "Select a piece to move (a4)"
+        while !selection()
+        end
+        #puts possible_moves()
+        puts "Select where to move it"
     end
 
     def selection()
-
+        selection = gets.chomp
+        selection.gsub(/[a-z]/){|c|s.index©+1}
+        print selection
     end
-    
+
 
 end
 
