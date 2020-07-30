@@ -10,7 +10,7 @@ require "./lib/rook"
 class Board
     attr_accessor :array, :player1, :player2
 
-    def initialize(player1, player 2)
+    def initialize(player1, player2)
         @array = create_board()
         @player1 = player1
         @player2 = player2

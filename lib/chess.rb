@@ -10,7 +10,9 @@ require "./lib/rook"
 
 class Chess
     def initialize()
-        @board = Board.new
+        @player1 = Player.new
+        @player2 = Player.new
+        @board = Board.new(@player1, @player2)
         @turn = 1
         gameplay()
     end
