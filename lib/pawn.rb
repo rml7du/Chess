@@ -18,8 +18,3 @@ class Pawn
     end
 
 end
-
-pawn = Pawn.new(1,1,2)
-pawn1 = Pawn.new(1,1,1)
-puts "#{pawn.code}"
-puts "#{pawn1.code}"
