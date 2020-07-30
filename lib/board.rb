@@ -16,6 +16,7 @@ class Board
         @player1 = Player.new
         @player2 = Player.new
         set_up()
+        puts "Hello #{@player1.name} and #{@player2.name}, lets play."
     end
 
     def create_board()
@@ -23,48 +24,53 @@ class Board
     end
 
     def set_up()
-        @array[0][0] = Rook.new(0,0, @player1.player_number).code
-        @array[0][1] = Knight.new(0,1, @player1.player_number).code
-        @array[0][2] = Bishop.new(0,2, @player1.player_number).code
-        @array[0][3] = Queen.new(0,3, @player1.player_number).code
-        @array[0][4] = King.new(0,4, @player1.player_number).code
-        @array[0][5] = Bishop.new(0,5, @player1.player_number).code
-        @array[0][6] = Knight.new(0,6, @player1.player_number).code
-        @array[0][7] = Rook.new(0,7, @player1.player_number).code
+        @array[0][0] = Rook.new(0,0, @player1.player_number)
+        @array[0][1] = Knight.new(0,1, @player1.player_number)
+        @array[0][2] = Bishop.new(0,2, @player1.player_number)
+        @array[0][3] = Queen.new(0,3, @player1.player_number)
+        @array[0][4] = King.new(0,4, @player1.player_number)
+        @array[0][5] = Bishop.new(0,5, @player1.player_number)
+        @array[0][6] = Knight.new(0,6, @player1.player_number)
+        @array[0][7] = Rook.new(0,7, @player1.player_number)
 
-        @array[1][0] = Pawn.new(1,0, @player1.player_number).code
-        @array[1][1] = Pawn.new(1,1, @player1.player_number).code
-        @array[1][2] = Pawn.new(1,2, @player1.player_number).code
-        @array[1][3] = Pawn.new(1,3, @player1.player_number).code
-        @array[1][4] = Pawn.new(1,4, @player1.player_number).code
-        @array[1][5] = Pawn.new(1,5, @player1.player_number).code
-        @array[1][6] = Pawn.new(1,6, @player1.player_number).code
-        @array[1][7] = Pawn.new(1,7, @player1.player_number).code
+        @array[1][0] = Pawn.new(1,0, @player1.player_number)
+        @array[1][1] = Pawn.new(1,1, @player1.player_number)
+        @array[1][2] = Pawn.new(1,2, @player1.player_number)
+        @array[1][3] = Pawn.new(1,3, @player1.player_number)
+        @array[1][4] = Pawn.new(1,4, @player1.player_number)
+        @array[1][5] = Pawn.new(1,5, @player1.player_number)
+        @array[1][6] = Pawn.new(1,6, @player1.player_number)
+        @array[1][7] = Pawn.new(1,7, @player1.player_number)
 
-        @array[7][0] = Rook.new(7,0, @player2.player_number).code
-        @array[7][1] = Knight.new(7,1, @player2.player_number).code
-        @array[7][2] = Bishop.new(7,2, @player2.player_number).code
-        @array[7][3] = Queen.new(7,3, @player2.player_number).code
-        @array[7][4] = King.new(7,4, @player2.player_number).code
-        @array[7][5] = Bishop.new(7,5, @player2.player_number).code
-        @array[7][6] = Knight.new(7,6, @player2.player_number).code
-        @array[7][7] = Rook.new(7,7, @player2.player_number).code
+        @array[7][0] = Rook.new(7,0, @player2.player_number)
+        @array[7][1] = Knight.new(7,1, @player2.player_number)
+        @array[7][2] = Bishop.new(7,2, @player2.player_number)
+        @array[7][3] = Queen.new(7,3, @player2.player_number)
+        @array[7][4] = King.new(7,4, @player2.player_number)
+        @array[7][5] = Bishop.new(7,5, @player2.player_number)
+        @array[7][6] = Knight.new(7,6, @player2.player_number)
+        @array[7][7] = Rook.new(7,7, @player2.player_number)
 
-        @array[6][0] = Pawn.new(6,0, @player2.player_number).code
-        @array[6][1] = Pawn.new(2,1, @player2.player_number).code
-        @array[6][2] = Pawn.new(2,2, @player2.player_number).code
-        @array[6][3] = Pawn.new(2,3, @player2.player_number).code
-        @array[6][4] = Pawn.new(2,4, @player2.player_number).code
-        @array[6][5] = Pawn.new(2,5, @player2.player_number).code
-        @array[6][6] = Pawn.new(2,6, @player2.player_number).code
-        @array[6][7] = Pawn.new(2,7, @player2.player_number).code
+        @array[6][0] = Pawn.new(6,0, @player2.player_number)
+        @array[6][1] = Pawn.new(2,1, @player2.player_number)
+        @array[6][2] = Pawn.new(2,2, @player2.player_number)
+        @array[6][3] = Pawn.new(2,3, @player2.player_number)
+        @array[6][4] = Pawn.new(2,4, @player2.player_number)
+        @array[6][5] = Pawn.new(2,5, @player2.player_number)
+        @array[6][6] = Pawn.new(2,6, @player2.player_number)
+        @array[6][7] = Pawn.new(2,7, @player2.player_number)
       
         #will add initial set up once piece classes are ready.
     end
 
     def print_board() #need to be able to print for both players
-        @array.each {|x| print "+ - + - + - + - + - + - + - + - +\n| #{x.join(' | ')} |\n"}
-        print "+ - + - + - + - + - + - + - + - +\n"
+        y = 1
+        @array.each do |x| 
+            print "   + - + - + - + - + - + - + - + - +\n#{y}  | #{x.join(' | ')} |\n"
+            y +=1
+        end
+        puts "   + - + - + - + - + - + - + - + - +"
+        puts "     a   b   c   d   e   f   g   h  "
         #print "+---+---+---+---+---+---+---+---+\n" for later if want to change board aestetic
     end
 end
