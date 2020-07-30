@@ -1,11 +1,11 @@
-require "./lib/bishop"
-require "./lib/chess"
-require "./lib/king"
-require "./lib/knight"
-require "./lib/pawn"
-require "./lib/player"
-require "./lib/queen"
-require "./lib/rook"
+require_relative "./lib/bishop"
+#require "./lib/chess"
+require_relative "./lib/king"
+require_relative "./lib/knight"
+require_relative "./lib/pawn"
+require_relative "./lib/player"
+require_relative "./lib/queen"
+require_relative "./lib/rook"
 
 class Board
     attr_accessor :array, :player1, :player2
