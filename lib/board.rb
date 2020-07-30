@@ -8,7 +8,7 @@ require "./lib/queen"
 require "./lib/rook"
 
 class Board
-    attr_accessor :array
+    attr_accessor :array, :player1, :player2
 
     def initialize()
         @array = create_board()
@@ -90,6 +90,3 @@ class Board
     end
 end
 
-board = Board.new()
-board.print_board(1)
-board.print_board(2)
