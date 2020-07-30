@@ -24,7 +24,7 @@ class Board
     end
 
     def set_up()
-        @array[0][0] = Rook.new(0,0, @player1.player_number)
+        @array[0][0] = Bishop.new(0,0, @player1.player_number)
         @array[0][1] = Knight.new(0,1, @player1.player_number)
         @array[0][2] = Bishop.new(0,2, @player1.player_number)
         @array[0][3] = Queen.new(0,3, @player1.player_number)
@@ -42,7 +42,7 @@ class Board
         @array[1][6] = Pawn.new(1,6, @player1.player_number)
         @array[1][7] = Pawn.new(1,7, @player1.player_number)
 
-        @array[7][0] = Rook.new(7,0, @player2.player_number)
+        @array[7][0] = Bishop.new(7,0, @player2.player_number)
         @array[7][1] = Knight.new(7,1, @player2.player_number)
         @array[7][2] = Bishop.new(7,2, @player2.player_number)
         @array[7][3] = Queen.new(7,3, @player2.player_number)
@@ -58,22 +58,39 @@ class Board
         @array[6][4] = Pawn.new(2,4, @player2.player_number)
         @array[6][5] = Pawn.new(2,5, @player2.player_number)
         @array[6][6] = Pawn.new(2,6, @player2.player_number)
-        @array[6][7] = Pawn.new(2,7, @player2.player_number)
+        @array[4][7] = Pawn.new(2,7, @player2.player_number)
       
-        #will add initial set up once piece classes are ready.
+        
     end
 
-    def print_board() #need to be able to print for both players
-        y = 1
-        @array.each do |x| 
-            print "   + - + - + - + - + - + - + - + - +\n#{y}  | #{x.join(' | ')} |\n"
-            y +=1
+    def print_board(player_turn) #need to be able to print for both players
+        if player_turn % 2 == 1
+            y = 1
+            puts "\n\n"
+            puts "     a   b   c   d   e   f   g   h  " 
+            @array.each do |x| 
+                print "   + - + - + - + - + - + - + - + - +\n#{y}  | #{x.join(' | ')} |\n"
+                y +=1
+            end
+            puts "   + - + - + - + - + - + - + - + - +"
+            puts "     a   b   c   d   e   f   g   h  " 
+            puts "\n"           
+        else
+            y = 8
+            puts "\n\n"
+            puts "     h   g   f   e   d   c   b   a  "
+            @array.reverse.each do |x| 
+                print "   + - + - + - + - + - + - + - + - +\n#{y}  | #{x.reverse.join(' | ')} |\n"
+                y -=1
+            end
+            puts "   + - + - + - + - + - + - + - + - +"
+            puts "     h   g   f   e   d   c   b   a  "
+            puts "\n"
         end
-        puts "   + - + - + - + - + - + - + - + - +"
-        puts "     a   b   c   d   e   f   g   h  "
         #print "+---+---+---+---+---+---+---+---+\n" for later if want to change board aestetic
     end
 end
 
 board = Board.new()
-board.print_board()
+board.print_board(1)
+board.print_board(2)
