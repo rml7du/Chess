@@ -17,14 +17,21 @@ class Chess
     end
 
     def gameplay()
-        if @turn % 2 == 1
-            puts "its #{@board.player1.name}'s turn"
-            @board.print_board(@turn)
-        else
-            puts "its #{@board.palyer2.name}'s turn"
-            @board.pring_board(@turn)
+        while board.check_mate() == false
+            @turn % 2 == 1 ? current_player = @player1 : current_player = @player2
+            player_turn(current_player)
+            @turn+=1
         end
     end
+
+    def player_turn()
+
+    end
+
+    def selection()
+
+    end
+    
 
 end
 
