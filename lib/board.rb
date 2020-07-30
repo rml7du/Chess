@@ -1,19 +1,19 @@
-require_relative "./lib/bishop"
+require "./lib/bishop"
 #require "./lib/chess"
-require_relative "./lib/king"
-require_relative "./lib/knight"
-require_relative "./lib/pawn"
-require_relative "./lib/player"
-require_relative "./lib/queen"
-require_relative "./lib/rook"
+require "./lib/king"
+require "./lib/knight"
+require "./lib/pawn"
+require "./lib/player"
+require "./lib/queen"
+require "./lib/rook"
 
 class Board
     attr_accessor :array, :player1, :player2
 
-    def initialize()
+    def initialize(player1, player 2)
         @array = create_board()
-        @player1 = Player.new
-        @player2 = Player.new
+        @player1 = player1
+        @player2 = player2
         set_up()
         puts "Hello #{@player1.name} and #{@player2.name}, lets play."
     end
