@@ -12,6 +12,10 @@ class Pawn
         player % 2 == 0 ? "\u2659" : "\u265F" 
     end
 
+    def to_s()
+        "#{@code}"
+    end
+
     def possible_moves()
         [@y + 1,x]
         [@y + 2,x]

@@ -12,6 +12,10 @@ class Rook
         player % 2 == 0 ? "\u2656" : "\u265C" 
     end
 
+    def to_s()
+        "#{@code}"
+    end
+
     def possible_moves()
 
         #horizontals

@@ -12,6 +12,10 @@ class Bishop
         player % 2 == 0 ? "\u2657" : "\u265D" 
     end
 
+    def to_s()
+        "#{@code}"
+    end
+
     def possible_moves()
 
         [@y + 1, @x + 1]

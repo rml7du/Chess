@@ -12,6 +12,10 @@ class Knight
         player % 2 == 0 ? "\u2658" : "\u265E" 
     end
 
+    def to_s()
+        "#{@code}"
+    end
+
     def possible_moves()
         [@y + 1, @x + 2]
         [@y + 1, @x - 2]

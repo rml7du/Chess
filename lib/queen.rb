@@ -12,6 +12,10 @@ class Queen
         player % 2 == 0 ? "\u2655" : "\u265B" 
     end
 
+    def to_s()
+        "#{@code}"
+    end
+
     def possible_moves()
         #diagnols
         [@y + 1, @x + 1]
