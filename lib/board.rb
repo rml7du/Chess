@@ -1,5 +1,4 @@
 require "./lib/bishop"
-require "./lib/board"
 #require "./lib/chess"
 require "./lib/king"
 require "./lib/knight"
@@ -24,7 +23,7 @@ class Board
     end
 
     def set_up()
-        @array[0][0] = Bishop.new(0,0, @player1.player_number)
+        @array[0][0] = Rook.new(0,0, @player1.player_number)
         @array[0][1] = Knight.new(0,1, @player1.player_number)
         @array[0][2] = Bishop.new(0,2, @player1.player_number)
         @array[0][3] = Queen.new(0,3, @player1.player_number)
@@ -42,7 +41,7 @@ class Board
         @array[1][6] = Pawn.new(1,6, @player1.player_number)
         @array[1][7] = Pawn.new(1,7, @player1.player_number)
 
-        @array[7][0] = Bishop.new(7,0, @player2.player_number)
+        @array[7][0] = Rook.new(7,0, @player2.player_number)
         @array[7][1] = Knight.new(7,1, @player2.player_number)
         @array[7][2] = Bishop.new(7,2, @player2.player_number)
         @array[7][3] = Queen.new(7,3, @player2.player_number)
@@ -58,7 +57,7 @@ class Board
         @array[6][4] = Pawn.new(2,4, @player2.player_number)
         @array[6][5] = Pawn.new(2,5, @player2.player_number)
         @array[6][6] = Pawn.new(2,6, @player2.player_number)
-        @array[4][7] = Pawn.new(2,7, @player2.player_number)
+        @array[6][7] = Pawn.new(2,7, @player2.player_number)
       
         
     end
