@@ -14,28 +14,7 @@ class Chess
         @board = Board.new(@player1, @player2)
         @turn = 1
         @current_player
-        gameplay()
-    end
-
-    def gameplay()
-        while @board.check_mate() == false
-            @turn % 2 == 1 ? @current_player = @player1 : @current_player = @player2
-            player_turn()
-            @turn+=1
-        end
-    end
-
-    def player_turn()
-        @board.print_board(@turn)
-        puts "#{@current_player.name}'s turn. Select a piece to move (type current location, ex: a4)"
-        while !piece_selection()
-        end
-        #puts possible_moves()
-        puts "#{@current_player.name} select where to move it"
-    end
-
-    def piece_selection() #converts human input into array and should only allow legal moves.
-        selecters = {
+        @selecters = { #used to translate input into array coordinates
             "a" => 0,
             "b" => 1,
             "c" => 2,
@@ -54,9 +33,31 @@ class Chess
             "7" => 6,
             "8" => 7
         }
+        gameplay()
+    end
+
+    def gameplay()
+        while @board.check_mate() == false
+            @turn % 2 == 1 ? @current_player = @player1 : @current_player = @player2
+            player_turn()
+            @turn+=1
+        end
+    end
+
+    def player_turn()
+        @board.print_board(@turn)
+        puts "#{@current_player.name}'s turn. Select a piece to move (type current location, ex: a4)"
+        while !piece_selection()
+        end
+        puts @board.selected_piece.possible_moves()
+        puts "#{@current_player.name} select where to move it"
+    end
+
+    def piece_selection() #converts human input into array and should only allow legal moves.
+        
         selection = gets.chomp.downcase
-        selection.gsub!(/\w/, selecters) #error potential when two letters or two numbers input
-        coordinates = selection.split()
+        selection.gsub!(/\w/, @selecters) #error potential when two letters or two numbers input
+        #- delecte coordinates = selection.split()
         #puts selection
         #puts @board.array[selection[1].to_i][selection[0].to_i]
         puts "current player: #{@current_player.name}"
@@ -70,13 +71,12 @@ class Chess
         elsif @board.array[selection[1].to_i][selection[0].to_i].player != @current_player.player_number #opponute piece selected
             puts "cannot move opponites piece, try again"
             return false
+        #elsif selected piece has no possible moves, return false    
         else 
             @board.selected_piece = @board.array[selection[1].to_i][selection[0].to_i]
             puts @board.selected_piece 
             return true
         end
-        puts selection
-        true
     end
 
 

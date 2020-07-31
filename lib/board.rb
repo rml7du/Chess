@@ -8,12 +8,13 @@ require "./lib/queen"
 require "./lib/rook"
 
 class Board
-    attr_accessor :array, :player1, :player2
+    attr_accessor :array, :player1, :player2, :selected_piece
 
     def initialize(player1, player2)
         @array = create_board()
         @player1 = player1
         @player2 = player2
+        @selected_piece
         set_up()
         puts "Hello #{@player1.name} and #{@player2.name}, lets play."
     end
