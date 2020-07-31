@@ -16,8 +16,9 @@ class Pawn
         "#{@code}"
     end
 
-    def possible_moves()
-        return [[@y + 1,@x],[@y + 2,@x]]
+    def possible_moves()#pawns can only move forward so some are moving in the negative direction.
+        player % 2 == 1 ? [[@y,@x - 1],[@y,@x-2]] : [[@y,@x+1],[@y,@x+2]] 
+        #player % 2 == 1 ? [[@x,@y - 1],[@x, @y - 2]] : [[@x, @y + 1],[@x, @y + 2]] 
     end
 
 end
