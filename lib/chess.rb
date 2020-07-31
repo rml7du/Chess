@@ -49,18 +49,40 @@ class Chess
         puts "#{@current_player.name}'s turn. Select a piece to move (type current location, ex: a4)"
         while !piece_selection()
         end
-        print @board.selected_piece.possible_moves()
+        #@board.print_possible_moves(@board.selected_piece.possible_moves())
+        @board.print_board(@turn)
         puts "#{@current_player.name} select where to move it"
+        print @board.selected_piece.possible_moves()
+        while !piece_move()
+        end
+        
+    end
+
+    def piece_move()#need to validate its a valid move
+        selection = gets.chomp.downcase
+        selection.gsub!(/\w/, @selecters)
+        if !(@board.selected_piece.possible_moves().join(',')).include?("#{selection}") #invalid move
+            puts "invalid move, please try again"
+            return false
+        else
+            @board.array[@board.selected_piece.x][@board.selected_piece.y] = " "
+            @board.array[selection[1].to_i][selection[0].to_i] = @board.selected_piece
+            @board.selected_piece.x = selection[1].to_i
+            @board.selected_piece.y = selection[0].to_i
+            puts "selected piece new coordinates: #{@board.selected_piece.x}, #{@board.selected_piece.y}"
+            return true
+        end
+        
+            
+            
+        #delete puts "this is the selected piece: #{@board.selected_piece} and its coordinates: #{@board.selected_piece.x},#{@board.selected_piece.y} "
+        
     end
 
     def piece_selection() #converts human input into array and should only allow legal moves.
         
         selection = gets.chomp.downcase
         selection.gsub!(/\w/, @selecters) #error potential when two letters or two numbers input
-        #- delecte coordinates = selection.split()
-        #puts selection
-        #puts @board.array[selection[1].to_i][selection[0].to_i]
-        puts "current player: #{@current_player.name}"
 
         if !('00'..'77').include?("#{selection}") #invalid selection
             puts "invalid selection, please try again"
@@ -74,7 +96,7 @@ class Chess
         #elsif selected piece has no possible moves, return false    
         else 
             @board.selected_piece = @board.array[selection[1].to_i][selection[0].to_i]
-            puts @board.selected_piece 
+            #puts @board.selected_piece 
             return true
         end
     end
