@@ -52,13 +52,13 @@ class Board
         @array[7][7] = Rook.new(7,7, @player1.player_number)
 
         @array[6][0] = Pawn.new(6,0, @player1.player_number)
-        @array[6][1] = Pawn.new(2,1, @player1.player_number)
-        @array[6][2] = Pawn.new(2,2, @player1.player_number)
-        @array[6][3] = Pawn.new(2,3, @player1.player_number)
-        @array[6][4] = Pawn.new(2,4, @player1.player_number)
-        @array[6][5] = Pawn.new(2,5, @player1.player_number)
-        @array[6][6] = Pawn.new(2,6, @player1.player_number)
-        @array[6][7] = Pawn.new(2,7, @player1.player_number)
+        @array[6][1] = Pawn.new(6,1, @player1.player_number)
+        @array[6][2] = Pawn.new(6,2, @player1.player_number)
+        @array[6][3] = Pawn.new(6,3, @player1.player_number)
+        @array[6][4] = Pawn.new(6,4, @player1.player_number)
+        @array[6][5] = Pawn.new(6,5, @player1.player_number)
+        @array[6][6] = Pawn.new(6,6, @player1.player_number)
+        @array[6][7] = Pawn.new(6,7, @player1.player_number)
     end
 
     def check_mate()
@@ -67,12 +67,14 @@ class Board
     end
 
     def print_possible_moves(possible_moves)
+        temp = @array
         i = 0
         possible_moves.length.times do
             coord = possible_moves[i]
-            @array[coord[1]][coord[0]] = "\u2299"
+            @array[coord[0]][coord[1]] = "\u2299"
             i+=1
         end
+        return temp
     end
 
     def print_board(player_turn) #need to be able to print for both players
