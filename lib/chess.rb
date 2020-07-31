@@ -49,7 +49,7 @@ class Chess
         puts "#{@current_player.name}'s turn. Select a piece to move (type current location, ex: a4)"
         while !piece_selection()
         end
-        puts @board.selected_piece.possible_moves()
+        print @board.selected_piece.possible_moves()
         puts "#{@current_player.name} select where to move it"
     end
 
