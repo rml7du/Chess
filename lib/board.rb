@@ -66,6 +66,15 @@ class Board
         return false
     end
 
+    def print_possible_moves(possible_moves)
+        i = 0
+        possible_moves.length.times do
+            coord = possible_moves[i]
+            @array[coord[1]][coord[0]] = "\u2299"
+            i+=1
+        end
+    end
+
     def print_board(player_turn) #need to be able to print for both players
         if player_turn % 2 == 1
             y = 1
