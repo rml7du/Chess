@@ -17,7 +17,7 @@ class Rook
     end
 
     def possible_moves()
-        return [
+        array = [
         #horizontals
         [@y, @x + 1],
         [@y, @x + 2],
@@ -51,6 +51,8 @@ class Rook
         [@y - 5, @x],
         [@y - 6, @x],
         [@y - 7, @x] ]
+
+        return array.each_with_index { |x,i|  array[i] = x.join('') }
         
     end
 end

@@ -17,7 +17,7 @@ class Bishop
     end
 
     def possible_moves()
-        return [
+        array = [
         [@y + 1, @x + 1],
         [@y + 2, @x + 2],
         [@y + 3, @x + 3],
@@ -45,6 +45,9 @@ class Bishop
         [@y - 4, @x + 4],
         [@y - 5, @x + 5],
         [@y - 6, @x + 6] ]
+
+        return array.each_with_index { |x,i|  array[i] = x.join('') }
+
         
     end
 end

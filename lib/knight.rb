@@ -17,7 +17,7 @@ class Knight
     end
 
     def possible_moves()
-        return [ 
+        array = [ 
         [@y + 1, @x + 2],
         [@y + 1, @x - 2],
         [@y + 2, @x + 1],
@@ -26,5 +26,7 @@ class Knight
         [@y - 1, @x - 2],
         [@y - 2, @x + 1],
         [@y - 2, @x - 1] ]
+
+        return array.each_with_index { |x,i|  array[i] = x.join('') }
     end
 end

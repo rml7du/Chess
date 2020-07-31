@@ -17,7 +17,7 @@ class Queen
     end
 
     def possible_moves()
-        return [
+        array = [
         #diagnols
         [@y + 1, @x + 1],
         [@y + 2, @x + 2],
@@ -84,6 +84,8 @@ class Queen
         [@y - 5, @x],
         [@y - 6, @x],
         [@y - 7, @x] ]
+
+        return array.each_with_index { |x,i|  array[i] = x.join('') }
         
     end
 end
