@@ -17,8 +17,7 @@ class Pawn
     end
 
     def possible_moves()
-        [@y + 1,x]
-        [@y + 2,x]
+        return [[@y + 1,@x],[@y + 2,@x]]
     end
 
 end
