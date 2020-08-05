@@ -122,19 +122,14 @@ class Chess
     def player_turn() #select a piece and tell it where to move
         @board.print_board(@turn)
         puts "#{@current_player.name}'s turn. Select a piece to move (type current location, ex: a4)"
-        while !piece_selection()
+        while !piece_selection() 
         end
-        #@board.print_board(@turn)
         puts "#{@current_player.name}, select where to move it:"
         moves = @board.selected_piece.possible_moves(@board)
-        moves.each do |x|
-            x.gsub!(/\w+/, @converters)
+        moves.each { |x| x.gsub!(/\w+/, @converters) }
+        print "#{moves} \n"
+        while !piece_move() 
         end
-        print "#{moves}"
-        #print "#{@board.selected_piece.possible_moves(@board)} \n" #shows possible moves
-        while !piece_move()
-        end
-        
     end
 
     def piece_move()#need to validate its a valid move
@@ -150,12 +145,7 @@ class Chess
             @board.selected_piece.y = selection[0].to_i
             puts "selected piece new coordinates: #{@board.selected_piece.x}, #{@board.selected_piece.y}"
             return true
-        end
-        
-            
-            
-        #delete puts "this is the selected piece: #{@board.selected_piece} and its coordinates: #{@board.selected_piece.x},#{@board.selected_piece.y} "
-        
+        end        
     end
 
     def piece_selection() #converts human input into array and should only allow legal moves.
@@ -177,12 +167,9 @@ class Chess
             return false    
         else 
             @board.selected_piece = @board.array[selection[1].to_i][selection[0].to_i]
-            #puts @board.selected_piece 
             return true
         end
     end
-
-
 end
 
 game = Chess.new
