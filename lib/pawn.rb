@@ -29,9 +29,9 @@ class Pawn
                     array << "#{@y}#{y}"   
                 end
                 #diagonal 
-                if board.array[y][@y+1] != " " && board.array[y][@y+1].player != self.player
+                if @y < 7 && board.array[y][@y+1] != " " && board.array[y][@y+1].player != self.player
                     array << "#{@y+1}#{y}" 
-                elsif board.array[y][@y+1] != " " && board.array[y][@y-1].player != self.player
+                elsif @y > 0 && board.array[y][@y-1] != " " && board.array[y][@y-1].player != self.player
                     array << "#{@y-1}#{y}" 
                 end
             end
@@ -46,9 +46,9 @@ class Pawn
                     array << "#{@y}#{y}"   
                 end
                 #diagonal 
-                if board.array[y][@y+1] != " " && board.array[y][@y+1].player != self.player
+                if @y < 7 && board.array[y][@y+1] != " " && board.array[y][@y+1].player != self.player
                     array << "#{@y+1}#{y}" 
-                elsif board.array[y][@y+1] != " " && board.array[y][@y-1].player != self.player
+                elsif @y > 0 && board.array[y][@y-1] != " " && board.array[y][@y-1].player != self.player
                     array << "#{@y-1}#{y}" 
                 end
             end
