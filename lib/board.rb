@@ -8,13 +8,16 @@ require "./lib/queen"
 require "./lib/rook"
 
 class Board
-    attr_accessor :array, :player1, :player2, :selected_piece
+    attr_accessor :array, :player1, :player2, :selected_piece, :checked
 
     def initialize(player1, player2)
         @array = create_board()
         @player1 = player1
         @player2 = player2
         @selected_piece
+        @checked = false
+        @king1
+        @king2
         set_up()
         puts "Hello #{@player1.name} and #{@player2.name}, lets play."
     end
@@ -24,11 +27,12 @@ class Board
     end
 
     def set_up()
+        @king2 = King.new(0,4, @player2.player_number) #so can reference king by name later
         @array[0][0] = Rook.new(0,0, @player2.player_number)
         @array[0][1] = Knight.new(0,1, @player2.player_number)
         @array[0][2] = Bishop.new(0,2, @player2.player_number)
         @array[0][3] = Queen.new(0,3, @player2.player_number)
-        @array[0][4] = King.new(0,4, @player2.player_number)
+        @array[0][4] = @king2 
         @array[0][5] = Bishop.new(0,5, @player2.player_number)
         @array[0][6] = Knight.new(0,6, @player2.player_number)
         @array[0][7] = Rook.new(0,7, @player2.player_number)
@@ -42,11 +46,12 @@ class Board
         @array[1][6] = Pawn.new(1,6, @player2.player_number)
         @array[1][7] = Pawn.new(1,7, @player2.player_number)
 
+        @king1 = King.new(7,4, @player1.player_number) #so can refernce king by name later
         @array[7][0] = Rook.new(7,0, @player1.player_number)
         @array[7][1] = Knight.new(7,1, @player1.player_number)
         @array[7][2] = Bishop.new(7,2, @player1.player_number)
         @array[7][3] = Queen.new(7,3, @player1.player_number)
-        @array[7][4] = King.new(7,4, @player1.player_number)
+        @array[7][4] = @king1 
         @array[7][5] = Bishop.new(7,5, @player1.player_number)
         @array[7][6] = Knight.new(7,6, @player1.player_number)
         @array[7][7] = Rook.new(7,7, @player1.player_number)
@@ -102,6 +107,13 @@ class Board
             puts "\n"
         end
         #print "+---+---+---+---+---+---+---+---+\n" for later if want to change board aestetic
+    end
+
+    def is_king_checked(current_player)
+        current_player == @player1 ? king_coord = "#{@king2.y}#{@king2.x}" : king = "#{@king1.y}#{@king1.x}"
+        print "king: #{king_coord}"
+        array = @selected_piece.possible_moves(self)
+        array.include?(king_coord) ? @checked = true : @checked = false
     end
 end
 

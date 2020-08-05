@@ -121,7 +121,11 @@ class Chess
 
     def player_turn() #select a piece and tell it where to move
         @board.print_board(@turn)
-        puts "#{@current_player.name}'s turn. Select a piece to move (type current location, ex: a4)"
+        if @board.checked
+            puts "You are in CHECK and must defend your king"
+        else
+            puts "#{@current_player.name}'s turn. Select a piece to move (type current location, ex: a4)"
+        end
         while !piece_selection() 
         end
         puts "#{@current_player.name}, select where to move it:"
@@ -130,6 +134,7 @@ class Chess
         print "#{moves} \n"
         while !piece_move() 
         end
+        @board.is_king_checked(@current_player)
     end
 
     def piece_move()#need to validate its a valid move
@@ -143,7 +148,6 @@ class Chess
             @board.array[selection[1].to_i][selection[0].to_i] = @board.selected_piece
             @board.selected_piece.x = selection[1].to_i
             @board.selected_piece.y = selection[0].to_i
-            puts "selected piece new coordinates: #{@board.selected_piece.x}, #{@board.selected_piece.y}"
             return true
         end        
     end
