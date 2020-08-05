@@ -16,8 +16,46 @@ class Pawn
         "#{@code}"
     end
 
-    def possible_moves()#pawns can only move forward so some are moving in the negative direction.
-        player % 2 == 1 ? [@y.to_s + (@x - 1).to_s, @y.to_s + (@x-2).to_s] : [@y.to_s + (@x+1).to_s, @y.to_s + (@x+2).to_s] 
+    def possible_moves(board)#pawns can only move forward so some are moving in the negative direction.
+        array = []
+        if player % 2 == 1 
+            y = @x - 1
+            if y >= 0
+                #verticals
+                if board.array[y][@y] == " " && board.array[y-1][@y] == " "#empty spot
+                    array << "#{@y}#{y}"   
+                    array << "#{@y}#{y-1}"
+                elsif board.array[y][@y] == " "
+                    array << "#{@y}#{y}"   
+                end
+                #diagonal 
+                if board.array[y][@y+1] != " " && board.array[y][@y+1].player != self.player
+                    array << "#{@y+1}#{y}" 
+                elsif board.array[y][@y+1] != " " && board.array[y][@y-1].player != self.player
+                    array << "#{@y-1}#{y}" 
+                end
+            end
+        else
+            y = @x + 1
+            if y <= 7
+                #verticals
+                if board.array[y][@y] == " " && board.array[y+1][@y] == " "#empty spot
+                    array << "#{@y}#{y}"   
+                    array << "#{@y}#{y+1}"
+                elsif board.array[y][@y] == " "
+                    array << "#{@y}#{y}"   
+                end
+                #diagonal 
+                if board.array[y][@y+1] != " " && board.array[y][@y+1].player != self.player
+                    array << "#{@y+1}#{y}" 
+                elsif board.array[y][@y+1] != " " && board.array[y][@y-1].player != self.player
+                    array << "#{@y-1}#{y}" 
+                end
+            end
+        end
+
+        return array
+            
     end
 
 end

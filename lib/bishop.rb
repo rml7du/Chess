@@ -16,38 +16,69 @@ class Bishop
         "#{@code}"
     end
 
-    def possible_moves()
-        array = [
-        [@y + 1, @x + 1],
-        [@y + 2, @x + 2],
-        [@y + 3, @x + 3],
-        [@y + 4, @x + 4],
-        [@y + 5, @x + 5],
-        [@y + 6, @x + 6],
+    def possible_moves(board)
+        array = []
+        #diagnols
+        y = @x - 1
+        x = @y - 1
+        until x < 0 || y < 0
+            if board.array[y][x] == " " #empty spot
+                array << "#{x}#{y}"   
+            elsif board.array[y][x].player != self.player #opponutes piece
+                array << "#{x}#{y}"
+                y = -1
+            else
+                y = -1 #remaining option is your own piece
+            end     
+            y -=1
+            x -=1
+        end
 
-        [@y + 1, @x - 1],
-        [@y + 2, @x - 2],
-        [@y + 3, @x - 3],
-        [@y + 4, @x - 4],
-        [@y + 5, @x - 5],
-        [@y + 6, @x - 6],
+        y = @x + 1
+        x = @y + 1
+        until x > 7 || y > 7
+            if board.array[y][x] == " " #empty spot
+                array << "#{x}#{y}"   
+            elsif board.array[y][x].player != self.player  #opponutes piece
+                array << "#{x}#{y}"
+                y = 9
+            else
+                y = 9 #remaining option is your own piece
+            end     
+            y +=1
+            x +=1
+        end
 
-        [@y - 1, @x - 1],
-        [@y - 2, @x - 2],
-        [@y - 3, @x - 3],
-        [@y - 4, @x - 4],
-        [@y - 5, @x - 5],
-        [@y - 6, @x - 6],
+        y = @x + 1
+        x = @y - 1
+        until x < 0 || y > 7
+            if board.array[y][x] == " " #empty spot
+                array << "#{x}#{y}"   
+            elsif board.array[y][x].player != self.player #opponutes piece
+                array << "#{x}#{y}"
+                y = 8
+            else
+                y = 8 #remaining option is your own piece
+            end     
+            y +=1
+            x -=1
+        end
 
-        [@y - 1, @x + 1],
-        [@y - 2, @x + 2],
-        [@y - 3, @x + 3],
-        [@y - 4, @x + 4],
-        [@y - 5, @x + 5],
-        [@y - 6, @x + 6] ]
+        y = @x - 1
+        x = @y + 1
+        until x > 7 || y < 0
+            if board.array[y][x] == " " #empty spot
+                array << "#{x}#{y}"   
+            elsif board.array[y][x].player != self.player #opponutes piece
+                array << "#{x}#{y}"
+                y = -1
+            else
+                y = -1 #remaining option is your own piece or off the board
+            end     
+            y -=1
+            x +=1
+        end
 
-        return array.each_with_index { |x,i|  array[i] = x.join('') }
-
-        
+        return array
     end
 end

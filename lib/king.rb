@@ -16,22 +16,89 @@ class King
         "#{@code}"
     end
 
-    def possible_moves()
-        array = [
-        #diagnols
-        [@y + 1, @x + 1],
-        [@y + 1, @x - 1],
-        [@y - 1, @x - 1],
-        [@y - 1, @x + 1],
+    def possible_moves(board)
+        array = []
 
         #horizontals
-        [@y, @x + 1],
-        [@y, @x - 1],
+        x = @y - 1
+        if x >= 0
+            if board.array[@x][x] == " " #empty spot
+                array << "#{x}#{@x}"   
+            elsif board.array[@x][x].player != self.player  #opponutes piece
+                array << "#{x}#{@x}"
+            end
+        end
+
+        x = @y + 1
+        if x <= 7
+            if board.array[@x][x] == " " #empty spot
+                array << "#{x}#{@x}"   
+            elsif board.array[@x][x].player != self.player #opponutes piece
+                array << "#{x}#{@x}"
+            end
+        end
 
         #verticals
-        [@y + 1, @x],
-        [@y - 1, @x] ]
+        y = @x + 1
+        if y <= 7
+            if board.array[y][@y] == " " #empty spot
+                array << "#{@y}#{y}"   
+            elsif board.array[y][@y].player != self.player #opponutes piece
+                array << "#{@y}#{y}"
+            end
+        end
+
+        y = @x - 1
+        if y >= 0
+            if board.array[y][@y] == " " #empty spot
+                array << "#{@y}#{y}"   
+            elsif board.array[y][@y].player != self.player #opponutes piece
+                array << "#{@y}#{y}"
+            end
+        end
         
-        return array.each_with_index { |x,i|  array[i] = x.join('') }
+        #diagnols
+        y = @x - 1
+        x = @y - 1
+        if x >= 0 && y >= 0
+            if board.array[y][x] == " " #empty spot
+                array << "#{x}#{y}"   
+            elsif board.array[y][x].player != self.player #opponutes piece
+                array << "#{x}#{y}"
+            end
+        end
+
+        y = @x + 1
+        x = @y + 1
+        if x <= 7 && y <= 7
+            if board.array[y][x] == " " #empty spot
+                array << "#{x}#{y}"   
+            elsif board.array[y][x].player != self.player #opponutes piece
+                array << "#{x}#{y}"
+            end
+        end
+
+        y = @x + 1
+        x = @y - 1
+        if x >= 0 && y <= 7
+            if board.array[y][x] == " " #empty spot
+                array << "#{x}#{y}"   
+            elsif board.array[y][x].player != self.player #opponutes piece
+                array << "#{x}#{y}"
+            end
+        end
+
+        y = @x - 1
+        x = @y + 1
+        if x <= 7 && y >= 0
+            if board.array[y][x] == " " #empty spot
+                array << "#{x}#{y}"   
+            elsif board.array[y][x].player != self.player #opponutes piece
+                array << "#{x}#{y}"
+            end
+        end
+
+        return array
+
     end
 end

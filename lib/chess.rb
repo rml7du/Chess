@@ -44,15 +44,14 @@ class Chess
         end
     end
 
-    def player_turn()
+    def player_turn() #select a piece and tell it where to move
         @board.print_board(@turn)
         puts "#{@current_player.name}'s turn. Select a piece to move (type current location, ex: a4)"
         while !piece_selection()
         end
-        #@board.print_possible_moves(@board.selected_piece.possible_moves())
-        @board.print_board(@turn)
-        puts "#{@current_player.name} select where to move it"
-        print @board.selected_piece.possible_moves()
+        #@board.print_board(@turn)
+        puts "#{@current_player.name}, select where to move it:"
+        print "#{@board.selected_piece.possible_moves(@board)} \n" #shows possible moves
         while !piece_move()
         end
         
@@ -61,7 +60,7 @@ class Chess
     def piece_move()#need to validate its a valid move
         selection = gets.chomp.downcase
         selection.gsub!(/\w/, @selecters)
-        if !(@board.selected_piece.possible_moves().join(',')).include?("#{selection}") #invalid move
+        if !(@board.selected_piece.possible_moves(@board).join(',')).include?("#{selection}") #invalid move
             puts "invalid move, please try again"
             return false
         else
@@ -93,7 +92,9 @@ class Chess
         elsif @board.array[selection[1].to_i][selection[0].to_i].player != @current_player.player_number #opponute piece selected
             puts "cannot move opponites piece, try again"
             return false
-        #elsif selected piece has no possible moves, return false    
+        elsif @board.array[selection[1].to_i][selection[0].to_i].possible_moves(@board) == []
+            puts "selected piece has no possible moves, try again" 
+            return false    
         else 
             @board.selected_piece = @board.array[selection[1].to_i][selection[0].to_i]
             #puts @board.selected_piece 

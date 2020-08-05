@@ -16,43 +16,62 @@ class Rook
         "#{@code}"
     end
 
-    def possible_moves()
-        array = [
+    def possible_moves(board)
+        array = []
         #horizontals
-        [@y, @x + 1],
-        [@y, @x + 2],
-        [@y, @x + 3],
-        [@y, @x + 4],
-        [@y, @x + 5],
-        [@y, @x + 6],
-        [@y, @x + 7],
+        x = @y - 1
+        until x < 0
+            if board.array[@x][x] == " " #empty spot
+                array << "#{x}#{@x}"   
+            elsif board.array[@x][x].player != self.player  #opponutes piece
+                array << "#{x}#{@x}"
+                x = -1
+            else
+                x = -1 #remaining option is your own piece or off the board
+            end     
+            x -=1
+        end
 
-        [@y, @x - 1],
-        [@y, @x - 2],
-        [@y, @x - 3],
-        [@y, @x - 4],
-        [@y, @x - 5],
-        [@y, @x - 6],
-        [@y, @x - 7],
+        x = @y + 1
+        until x > 7
+            if board.array[@x][x] == " " #empty spot
+                array << "#{x}#{@x}"   
+            elsif board.array[@x][x].player != self.player #opponutes piece
+                array << "#{x}#{@x}"
+                x = 8
+            else
+                x = 8 #remaining option is your own piece or off the board
+            end     
+            x +=1
+        end
 
         #verticals
-        [@y + 1, @x],
-        [@y + 2, @x],
-        [@y + 3, @x],
-        [@y + 4, @x],
-        [@y + 5, @x],
-        [@y + 6, @x],
-        [@y + 7, @x],
+        y = @x + 1
+        until y > 7
+            if board.array[y][@y] == " " #empty spot
+                array << "#{@y}#{y}"   
+            elsif board.array[y][@y].player != self.player #opponutes piece
+                array << "#{@y}#{y}"
+                y = 8
+            else
+                y = 8 #remaining option is your own piece or off the board
+            end     
+            y +=1
+        end
 
-        [@y - 1, @x],
-        [@y - 2, @x],
-        [@y - 3, @x],
-        [@y - 4, @x],
-        [@y - 5, @x],
-        [@y - 6, @x],
-        [@y - 7, @x] ]
+        y = @x - 1
+        until y < 0
+            if board.array[y][@y] == " " #empty spot
+                array << "#{@y}#{y}"   
+            elsif board.array[y][@y].player != self.player #opponutes piece
+                array << "#{@y}#{y}"
+                y = -1
+            else
+                y = -1 #remaining option is your own piece
+            end     
+            y -=1
+        end
 
-        return array.each_with_index { |x,i|  array[i] = x.join('') }
-        
+        return array
     end
 end
