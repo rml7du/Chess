@@ -1,4 +1,5 @@
-require "./lib/board"
+#require "./lib/board"
+require 'colorize'
 
 class Queen
     attr_accessor :x, :y, :player, :code
@@ -11,7 +12,7 @@ class Queen
     end
 
     def character_code(player)
-        player % 2 == 0 ? "\u2655" : "\u265B" 
+        player % 2 == 0 ? "\u2655".blue : "\u265B".green
     end
 
     def to_s()

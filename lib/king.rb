@@ -1,3 +1,5 @@
+require 'colorize'
+
 class King
     attr_accessor :x, :y, :player, :code
 
@@ -9,7 +11,7 @@ class King
     end
 
     def character_code(player)
-        player % 2 == 0 ? "\u2654" : "\u265A" 
+        player % 2 == 0 ? "\u2654".blue : "\u265A".green
     end
 
     def to_s()

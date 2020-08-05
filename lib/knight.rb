@@ -9,7 +9,7 @@ class Knight
     end
 
     def character_code(player)
-        player % 2 == 0 ? "\u2658" : "\u265E" 
+        player % 2 == 0 ? "\u2658".blue : "\u265E".green
     end
 
     def to_s()

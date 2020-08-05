@@ -9,7 +9,7 @@ class Pawn
     end
 
     def character_code(player)
-        player % 2 == 0 ? "\u2659" : "\u265F" 
+        player % 2 == 0 ? "\u2659".blue : "\u265F".green
     end
 
     def to_s()

@@ -9,7 +9,7 @@ class Rook
     end
 
     def character_code(player)
-        player % 2 == 0 ? "\u2656" : "\u265C" 
+        player % 2 == 0 ? "\u2656".blue : "\u265C".green
     end
 
     def to_s()

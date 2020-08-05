@@ -1,3 +1,5 @@
+require 'colorize'
+
 class Bishop
     attr_accessor :x, :y, :player, :code
 
@@ -9,7 +11,7 @@ class Bishop
     end
 
     def character_code(player)
-        player % 2 == 0 ? "\u2657" : "\u265D" 
+        player % 2 == 0 ? "\u2657".blue : "\u265D".green
     end
 
     def to_s()
