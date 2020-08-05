@@ -21,49 +21,49 @@ class Knight
 
         x = @y + 1
         y = @x + 2
-        if (x >= 0 && x <= 7) || (y >= 0 && y <=7)
+        if (x >= 0 && x <= 7) && (y >= 0 && y <=7)
             array << "#{x}#{y}"  if board.array[y][x] == " " || board.array[y][x].player != self.player
         end   
         
         x = @y + 1
         y = @x - 2
-        if (x >= 0 && x <= 7) || (y >= 0 && y <=7)
+        if (x >= 0 && x <= 7) && (y >= 0 && y <=7)
             array << "#{x}#{y}"  if board.array[y][x] == " " || board.array[y][x].player != self.player
         end
 
         x = @y + 2
         y = @x + 1
-        if (x >= 0 && x <= 7) || (y >= 0 && y <=7)
+        if (x >= 0 && x <= 7) && (y >= 0 && y <=7)
             array << "#{x}#{y}"  if board.array[y][x] == " " || board.array[y][x].player != self.player
         end
         
         x = @y + 2
         y = @x - 1
-        if (x >= 0 && x <= 7) || (y >= 0 && y <=7)
+        if (x >= 0 && x <= 7) && (y >= 0 && y <=7)
             array << "#{x}#{y}"  if board.array[y][x] == " " || board.array[y][x].player != self.player
         end
 
         x = @y - 1
         y = @x + 2
-        if (x >= 0 && x <= 7) || (y >= 0 && y <=7)
+        if (x >= 0 && x <= 7) && (y >= 0 && y <=7)
             array << "#{x}#{y}"  if board.array[y][x] == " " || board.array[y][x].player != self.player
         end   
         
         x = @y - 1
         y = @x - 2
-        if (x >= 0 && x <= 7) || (y >= 0 && y <=7)
+        if (x >= 0 && x <= 7) && (y >= 0 && y <=7)
             array << "#{x}#{y}"  if board.array[y][x] == " " || board.array[y][x].player != self.player
         end
 
         x = @y - 2
         y = @x + 1
-        if (x >= 0 && x <= 7) || (y >= 0 && y <=7)
+        if (x >= 0 && x <= 7) && (y >= 0 && y <=7)
             array << "#{x}#{y}"  if board.array[y][x] == " " || board.array[y][x].player != self.player
         end
         
         x = @y - 2
         y = @x - 1
-        if (x >= 0 && x <= 7) || (y >= 0 && y <=7)
+        if (x >= 0 && x <= 7) && (y >= 0 && y <=7)
             array << "#{x}#{y}"  if board.array[y][x] == " " || board.array[y][x].player != self.player
         end
 
