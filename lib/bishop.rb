@@ -1,4 +1,4 @@
-require 'colorize'
+#require 'colorize'
 
 class Bishop
     attr_accessor :x, :y, :player, :code
