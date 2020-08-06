@@ -140,12 +140,12 @@ class Chess
         end
         moves.each { |x| x.gsub!(/\w+/, @converters) }
         print "#{moves} \n"
-        while !piece_move() 
+        while !piece_move() ##need to add a way to change which piece want to move even after youve selected a different piece.
         end
         @board.is_king_checked(@current_player)
     end
 
-    def piece_move()#need to validate its a valid move
+    def piece_move() #need to validate its a valid move
         selection = gets.chomp.downcase
         selection.gsub!(/\w/, @selecters)
         if !(@board.selected_piece.possible_moves(@board).join(',')).include?("#{selection}") #invalid move
@@ -174,7 +174,7 @@ class Chess
         elsif @board.array[selection[1].to_i][selection[0].to_i].player != @current_player.player_number #opponute piece selected
             puts "cannot move opponites piece, try again"
             return false
-        elsif @board.array[selection[1].to_i][selection[0].to_i].possible_moves(@board) == []
+        elsif @board.array[selection[1].to_i][selection[0].to_i].possible_moves(@board) == [] #no possible moves
             puts "selected piece has no possible moves, try again" 
             return false  
         elsif (@board.array[selection[1].to_i][selection[0].to_i] == @board.king1 || @board.array[selection[1].to_i][selection[0].to_i] == @board.king2) && @board.array[selection[1].to_i][selection[0].to_i].possible_moves(@board) - @board.illegal_moves(@current_player) == [] #kings cannot move into danger so need to remove additional illegal moves
