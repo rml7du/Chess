@@ -133,7 +133,11 @@ class Chess
         while !piece_selection() #assigns selected_piece
         end
         puts "#{@current_player.name}, select where to move it:"
-        moves = @board.selected_piece.possible_moves(@board)
+        if (@board.selected_piece == @board.king1 || @board.selected_piece == @board.king2)   #kings cannot move into danger so need to remove additional illegal moves
+            moves = @board.selected_piece.possible_moves(@board) - @board.illegal_moves(@current_player) 
+        else 
+            moves = @board.selected_piece.possible_moves(@board)
+        end
         moves.each { |x| x.gsub!(/\w+/, @converters) }
         print "#{moves} \n"
         while !piece_move() 
@@ -176,7 +180,7 @@ class Chess
         elsif (@board.array[selection[1].to_i][selection[0].to_i] == @board.king1 || @board.array[selection[1].to_i][selection[0].to_i] == @board.king2) && @board.array[selection[1].to_i][selection[0].to_i].possible_moves(@board) - @board.illegal_moves(@current_player) == [] #kings cannot move into danger so need to remove additional illegal moves
             puts "King has no saving moves, try again" 
             return false  
-        elsif #how do we make sure the pieces make a legal move that leaves king in check
+        #elsif #how do we make sure the pieces make a legal move that leaves king in check
         else 
             @board.selected_piece = @board.array[selection[1].to_i][selection[0].to_i]
             return true

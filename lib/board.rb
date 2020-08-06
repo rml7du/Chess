@@ -193,7 +193,7 @@ class Board
     end
 
     def illegal_moves(current_player)
-        if current_player == @player2 
+        if current_player == @player1
             king = @king1
             opponent = @player2
         else 
