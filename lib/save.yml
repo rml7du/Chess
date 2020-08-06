@@ -1,0 +1,269 @@
+---
+:@array:
+- - &25 !ruby/object:Rook
+    x: 0
+    y: 0
+    player: 2
+    code: "\e[0;34;49m♖\e[0m"
+  - &26 !ruby/object:Knight
+    x: 0
+    y: 1
+    player: 2
+    code: "\e[0;34;49m♘\e[0m"
+  - &27 !ruby/object:Bishop
+    x: 0
+    y: 2
+    player: 2
+    code: "\e[0;34;49m♗\e[0m"
+  - &28 !ruby/object:Queen
+    x: 0
+    y: 3
+    player: 2
+    code: "\e[0;34;49m♕\e[0m"
+  - &29 !ruby/object:King
+    x: 0
+    y: 4
+    player: 2
+    code: "\e[0;34;49m♔\e[0m"
+  - &30 !ruby/object:Bishop
+    x: 0
+    y: 5
+    player: 2
+    code: "\e[0;34;49m♗\e[0m"
+  - &31 !ruby/object:Knight
+    x: 0
+    y: 6
+    player: 2
+    code: "\e[0;34;49m♘\e[0m"
+  - &32 !ruby/object:Rook
+    x: 0
+    y: 7
+    player: 2
+    code: "\e[0;34;49m♖\e[0m"
+- - " "
+  - &18 !ruby/object:Pawn
+    x: 1
+    y: 1
+    player: 2
+    code: "\e[0;34;49m♙\e[0m"
+  - &19 !ruby/object:Pawn
+    x: 1
+    y: 2
+    player: 2
+    code: "\e[0;34;49m♙\e[0m"
+  - " "
+  - &21 !ruby/object:Pawn
+    x: 1
+    y: 4
+    player: 2
+    code: "\e[0;34;49m♙\e[0m"
+  - &22 !ruby/object:Pawn
+    x: 1
+    y: 5
+    player: 2
+    code: "\e[0;34;49m♙\e[0m"
+  - &23 !ruby/object:Pawn
+    x: 1
+    y: 6
+    player: 2
+    code: "\e[0;34;49m♙\e[0m"
+  - &24 !ruby/object:Pawn
+    x: 1
+    y: 7
+    player: 2
+    code: "\e[0;34;49m♙\e[0m"
+- - &17 !ruby/object:Pawn
+    x: 2
+    y: 0
+    player: 2
+    code: "\e[0;34;49m♙\e[0m"
+  - " "
+  - " "
+  - &20 !ruby/object:Pawn
+    x: 2
+    y: 3
+    player: 2
+    code: "\e[0;34;49m♙\e[0m"
+  - " "
+  - " "
+  - " "
+  - " "
+- - " "
+  - " "
+  - " "
+  - " "
+  - " "
+  - " "
+  - " "
+  - " "
+- - " "
+  - " "
+  - " "
+  - " "
+  - " "
+  - &6 !ruby/object:Pawn
+    x: 4
+    y: 5
+    player: 1
+    code: "\e[0;32;49m♟\e[0m"
+  - " "
+  - &8 !ruby/object:Pawn
+    x: 4
+    y: 7
+    player: 1
+    code: "\e[0;32;49m♟\e[0m"
+- - " "
+  - " "
+  - " "
+  - " "
+  - " "
+  - " "
+  - " "
+  - " "
+- - &1 !ruby/object:Pawn
+    x: 6
+    y: 0
+    player: 1
+    code: "\e[0;32;49m♟\e[0m"
+  - &2 !ruby/object:Pawn
+    x: 6
+    y: 1
+    player: 1
+    code: "\e[0;32;49m♟\e[0m"
+  - &3 !ruby/object:Pawn
+    x: 6
+    y: 2
+    player: 1
+    code: "\e[0;32;49m♟\e[0m"
+  - &4 !ruby/object:Pawn
+    x: 6
+    y: 3
+    player: 1
+    code: "\e[0;32;49m♟\e[0m"
+  - &5 !ruby/object:Pawn
+    x: 6
+    y: 4
+    player: 1
+    code: "\e[0;32;49m♟\e[0m"
+  - " "
+  - &7 !ruby/object:Pawn
+    x: 6
+    y: 6
+    player: 1
+    code: "\e[0;32;49m♟\e[0m"
+  - " "
+- - &9 !ruby/object:Rook
+    x: 7
+    y: 0
+    player: 1
+    code: "\e[0;32;49m♜\e[0m"
+  - &10 !ruby/object:Knight
+    x: 7
+    y: 1
+    player: 1
+    code: "\e[0;32;49m♞\e[0m"
+  - &11 !ruby/object:Bishop
+    x: 7
+    y: 2
+    player: 1
+    code: "\e[0;32;49m♝\e[0m"
+  - &12 !ruby/object:Queen
+    x: 7
+    y: 3
+    player: 1
+    code: "\e[0;32;49m♛\e[0m"
+  - &13 !ruby/object:King
+    x: 7
+    y: 4
+    player: 1
+    code: "\e[0;32;49m♚\e[0m"
+  - &14 !ruby/object:Bishop
+    x: 7
+    y: 5
+    player: 1
+    code: "\e[0;32;49m♝\e[0m"
+  - &15 !ruby/object:Knight
+    x: 7
+    y: 6
+    player: 1
+    code: "\e[0;32;49m♞\e[0m"
+  - &16 !ruby/object:Rook
+    x: 7
+    y: 7
+    player: 1
+    code: "\e[0;32;49m♜\e[0m"
+:@player1: !ruby/object:Player
+  name: '1'
+  player_number: 1
+  player_pieces:
+  - *1
+  - *2
+  - *3
+  - *4
+  - *5
+  - *6
+  - *7
+  - *8
+  - *9
+  - *10
+  - *11
+  - *12
+  - *13
+  - *14
+  - *15
+  - *16
+:@player2: !ruby/object:Player
+  name: '2'
+  player_number: 2
+  player_pieces:
+  - *17
+  - *18
+  - *19
+  - *20
+  - *21
+  - *22
+  - *23
+  - *24
+  - *25
+  - *26
+  - *27
+  - *28
+  - *29
+  - *30
+  - *31
+  - *32
+:@checked: false
+:@checkmate: false
+:@rook21: *25
+:@knight21: *26
+:@bishop21: *27
+:@queen2: *28
+:@king2: *29
+:@bishop22: *30
+:@knight22: *31
+:@rook22: *32
+:@pawn21: *17
+:@pawn22: *18
+:@pawn23: *19
+:@pawn24: *20
+:@pawn25: *21
+:@pawn26: *22
+:@pawn27: *23
+:@pawn28: *24
+:@rook11: *9
+:@knight11: *10
+:@bishop11: *11
+:@queen1: *12
+:@king1: *13
+:@bishop12: *14
+:@knight12: *15
+:@rook12: *16
+:@pawn11: *1
+:@pawn12: *2
+:@pawn13: *3
+:@pawn14: *4
+:@pawn15: *5
+:@pawn16: *6
+:@pawn17: *7
+:@pawn18: *8
+:@selected_piece: *20

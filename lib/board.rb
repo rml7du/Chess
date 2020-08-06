@@ -5,9 +5,10 @@ require_relative "pawn"
 require_relative "player"
 require_relative "queen"
 require_relative "rook"
-require "yaml"
+require_relative "serialization"
 
 class Board
+    include BasicSerialization
     attr_accessor :array, :player1, :player2, :selected_piece, :checked, :checkmate, :king1, :king2
 
     def initialize(player1, player2)

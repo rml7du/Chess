@@ -1,20 +1,13 @@
 require_relative "board"
-=begin
-require "./lib/bishop"
-
-require "./lib/king"
-require "./lib/knight"
-require "./lib/pawn"
-require "./lib/player"
-require "./lib/queen"
-require "./lib/rook"
-=end
 
 class Chess
+    include BasicSerialization
     def initialize()
+        #load()
         @player1 = Player.new
         @player2 = Player.new
         @board = Board.new(@player1, @player2)
+        load()
         @turn = 1
         @current_player = @player2
         @selecters = { #used to translate input into array coordinates
@@ -114,8 +107,22 @@ class Chess
         gameplay()
     end
 
+    def load()
+        puts "Would you like to load the previous saved game? (type 1 if yes)"
+        if gets.chomp == '1'
+            @board.unserialize()
+        end
+    end
+
     def gameplay()
         while @board.checkmate == false
+            if @turn % 5 == 0
+                puts "Would you like to save your progress? (1 for yes, 2 for no)"
+                if gets.chomp == '1'
+                    File.open("save.yml", "w") { |file| file.write(@board.serialize()) }
+                    break
+                end
+            end
             @turn % 2 == 1 ? @current_player = @player1 : @current_player = @player2
             player_turn()
             @board.check_mate(@current_player)
