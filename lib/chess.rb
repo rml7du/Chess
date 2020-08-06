@@ -115,9 +115,10 @@ class Chess
     end
 
     def gameplay()
-        while @board.check_mate(@current_player) == false
+        while @board.checkmate == false
             @turn % 2 == 1 ? @current_player = @player1 : @current_player = @player2
             player_turn()
+            @board.check_mate(@current_player)
             @turn+=1
         end
     end
@@ -129,7 +130,7 @@ class Chess
         else
             puts "#{@current_player.name}'s turn. Select a piece to move (type current location, ex: a4)"
         end
-        while !piece_selection() 
+        while !piece_selection() #assigns selected_piece
         end
         puts "#{@current_player.name}, select where to move it:"
         moves = @board.selected_piece.possible_moves(@board)
@@ -171,7 +172,11 @@ class Chess
             return false
         elsif @board.array[selection[1].to_i][selection[0].to_i].possible_moves(@board) == []
             puts "selected piece has no possible moves, try again" 
-            return false    
+            return false  
+        elsif (@board.array[selection[1].to_i][selection[0].to_i] == @board.king1 || @board.array[selection[1].to_i][selection[0].to_i] == @board.king2) && @board.array[selection[1].to_i][selection[0].to_i].possible_moves(@board) - @board.illegal_moves(@current_player) == [] #kings cannot move into danger so need to remove additional illegal moves
+            puts "King has no saving moves, try again" 
+            return false  
+        elsif #how do we make sure the pieces make a legal move that leaves king in check
         else 
             @board.selected_piece = @board.array[selection[1].to_i][selection[0].to_i]
             return true

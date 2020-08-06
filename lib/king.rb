@@ -99,7 +99,7 @@ class King
                 array << "#{x}#{y}"
             end
         end
-
+        
         return array
 
     end

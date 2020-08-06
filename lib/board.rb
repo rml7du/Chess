@@ -7,7 +7,7 @@ require_relative "queen"
 require_relative "rook"
 
 class Board
-    attr_accessor :array, :player1, :player2, :selected_piece, :checked
+    attr_accessor :array, :player1, :player2, :selected_piece, :checked, :checkmate, :king1, :king2
 
     def initialize(player1, player2)
         @array = create_board()
@@ -15,6 +15,7 @@ class Board
         @player2 = player2
         @selected_piece
         @checked = false
+        @checkmate = false
         @king1
         @king2
         set_up()
@@ -115,20 +116,26 @@ class Board
             king = @king1
             opponent = @player2
         else 
-            king = @king2 #king_coord = "#{@king2.y}#{@king2.x}" : king = "#{@king1.y}#{@king1.x}"
+            king = @king2 
             opponent = @player1
         end
+=begin        temp_board = self
+        temp_board.array[king.x][king.y] = " " 
+        
+        
         king_moves = king.possible_moves(self)
         king_moves << "#{king.y}#{king.x}"
         print "kingmoves: #{king_moves} \n"
         total_moves = []
         opponent.player_pieces.each do |x| 
-            array = x.possible_moves(self) 
+            array = x.possible_moves(temp_board) 
             total_moves << array
         end
+        self.array[king.x][king.y] = king
+
         if king_moves - total_moves.flatten == []
             puts "CHECKMATE"
-            return true
+            #return true
         end
         print "kingmoves - totalmoves: #{king_moves} \n"
         #current_player.player_pieces.each { |x| array << x.possible_moves(self)
@@ -136,7 +143,7 @@ class Board
         #print array
         #array = @selected_piece.possible_moves(self)
         #array.include?(king_coord) ? @checked = true : @checked = false
-        #needs to be written to show king is unable to move
+=end       #needs to be written to show king is unable to move
         return false
     end
 
@@ -183,6 +190,25 @@ class Board
         print "king: #{king_coord}"
         array = @selected_piece.possible_moves(self)
         array.include?(king_coord) ? @checked = true : @checked = false
+    end
+
+    def illegal_moves(current_player)
+        if current_player == @player2 
+            king = @king1
+            opponent = @player2
+        else 
+            king = @king2 
+            opponent = @player1
+        end
+        temp_board = self
+        temp_board.array[king.x][king.y] = " " 
+        illegal = []
+        opponent.player_pieces.each do |x| 
+            array = x.possible_moves(temp_board) 
+            illegal << array
+        end
+        self.array[king.x][king.y] = king
+        return illegal.flatten
     end
 end
 
